@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Submission {
+  id          String   @id @default(cuid())
+
+  projectName String
+  githubUrl   String   @unique
+  liveUrl     String
+  description String
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
